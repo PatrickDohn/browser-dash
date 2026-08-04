@@ -10,7 +10,6 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card"
-import Image from "next/image"
 
 export function Weather() {
   const { isPending, error, data } = useQuery({
@@ -23,7 +22,6 @@ export function Weather() {
 
   if (error) return "An error has occurred: " + error.message
 
-  console.log(data, "!!!")
   return (
     <Card className="mb-4">
       <CardHeader>

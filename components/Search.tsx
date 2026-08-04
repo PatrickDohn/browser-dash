@@ -1,11 +1,6 @@
 "use client"
 
-import {
-  Paperclip,
-  PictureInPictureIcon,
-  PlusCircle,
-  SearchIcon,
-} from "lucide-react"
+import { Paperclip, PictureInPictureIcon, PlusCircle } from "lucide-react"
 
 import { Field, FieldDescription, FieldLabel } from "@/components/ui/field"
 import {
@@ -40,7 +35,6 @@ export function Search() {
           value={value}
           onChange={(e) => {
             setValue(e.target.value)
-            console.log(e.target.value)
           }}
           onKeyDown={(e) => {
             if (e.key === "Enter") goSearch()

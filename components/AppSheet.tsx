@@ -1,24 +1,13 @@
 import { useAppData, useAppDispatch } from "@/app/context/AppContext"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet"
+
+import { Sheet, SheetTrigger } from "@/components/ui/sheet"
 
 import { Content } from "./sheetData/Content"
 
 export function SheetDemo() {
   const { sheetState } = useAppData()
   const dispatch = useAppDispatch()
-  console.log("Sheet State:", sheetState.isOpen, sheetState.context) // Log the current sheet state
+
   return (
     <Sheet
       open={sheetState.isOpen}

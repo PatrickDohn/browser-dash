@@ -8,16 +8,15 @@ import {
   CardTitle,
 } from "./ui/card"
 import Link from "next/link"
-import Image from "next/image"
+
 import { Item, ItemActions, ItemContent, ItemMedia, ItemTitle } from "./ui/item"
-import { BadgeCheckIcon, ChevronRightIcon } from "lucide-react"
+import { ChevronRightIcon } from "lucide-react"
 import { useAppData, useAppDispatch } from "@/app/context/AppContext"
 import { Button } from "./ui/button"
 
 export function TabsLine() {
   const { favirotes, sheetState } = useAppData()
   const dispatch = useAppDispatch()
-  console.log("!!!", favirotes)
 
   const topThree = favirotes.slice(0, 3)
 
