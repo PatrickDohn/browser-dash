@@ -42,7 +42,7 @@ export default function Page() {
           </CardFooter>
         </Card>
       </div>
-      <div className="col-span-2 flex flex-col justify-between gap-4 rounded-lg border-4 p-4">
+      <div className="col-span-2 flex flex-col justify-between gap-4 rounded-lg border-4 p-4 pb-0">
         <div className="">
           <TabsLine />
         </div>

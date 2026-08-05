@@ -22,7 +22,7 @@ export function useGmailMessages() {
       const baseUrl = "https://gmail.googleapis.com/gmail/v1/users/me/messages"
       const params = new URLSearchParams({
         maxResults: "3",
-        q: "in:inbox -category:{social promotions updates forums}",
+        q: "in:inbox category:primary",
       })
       const listRes = await fetch(`${baseUrl}?${params.toString()}`, {
         headers: { Authorization: `Bearer ${session?.accessToken}` },

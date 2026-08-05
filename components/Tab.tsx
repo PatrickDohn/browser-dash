@@ -21,11 +21,27 @@ export function TabsLine() {
 
   const topThree = favirotes.slice(0, 3)
 
-  return (
+  https: return (
     <Tabs defaultValue="overview">
       <TabsList variant="line">
-        <TabsTrigger value="overview">Favorites</TabsTrigger>
-        <TabsTrigger value="analytics">Analytics</TabsTrigger>
+        <TabsTrigger value="overview">
+          <img
+            src={
+              "https://img.icons8.com/?size=100&id=8ggStxqyboK5&format=png&color=000000"
+            }
+            alt={"Favirotes"}
+            className="size-8 rounded-xl p-1"
+          />
+        </TabsTrigger>
+        <TabsTrigger value="analytics">
+          <img
+            src={
+              "https://img.icons8.com/?size=100&id=qyRpAggnV0zH&format=png&color=000000"
+            }
+            alt={"Gmail"}
+            className="size-8 rounded-xl p-1"
+          />
+        </TabsTrigger>
       </TabsList>
       <TabsContent value="overview">
         <Card>
@@ -82,14 +98,11 @@ export function TabsLine() {
       <TabsContent value="analytics">
         <Card>
           <CardHeader>
-            <CardTitle>Analytics</CardTitle>
             <CardDescription>
               <InboxPreview />
             </CardDescription>
           </CardHeader>
-          <CardContent className="text-sm text-muted-foreground">
-            You have 12 active projects and 3 pending tasks.
-          </CardContent>
+          <CardContent className="text-xs text-muted-foreground"></CardContent>
         </Card>
       </TabsContent>
     </Tabs>
