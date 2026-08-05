@@ -1,14 +1,8 @@
 "use client"
 
-import {
-  createContext,
-  ReactNode,
-  useContext,
-  useState,
-  useReducer,
-} from "react"
+import { createContext, ReactNode, useContext, useReducer } from "react"
 
-type SheetContext = "favorites" | "analytics" | null
+type SheetContext = "favorites" | "analytics" | "settings" | null
 
 interface AppProviderProps {
   children: ReactNode
@@ -130,6 +124,18 @@ const initialState: AppProps = {
       title: "Twitter",
       description: "Stay updated with the latest tweets.",
       icon: "https://abs.twimg.com/favicons/twitter.ico",
+    },
+    {
+      link: "https://tuiparts.sh",
+      title: "TUI Parts",
+      description: "Explore TUI Parts for terminal UI components.",
+      icon: "https://tuiparts.sh/favicon.ico",
+    },
+    {
+      link: "https://www.kibo-ui.com/components/status",
+      title: "Kibo UI",
+      description: "A modern React component library for building UIs.",
+      icon: "https://www.kibo-ui.com/favicon.ico",
     },
     {
       link: "https://www.linkedin.com",

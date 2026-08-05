@@ -38,7 +38,7 @@ export function Weather() {
   console.log("Weather Data:", data)
 
   return (
-    <Card className="mb-4 overflow-hidden border-0 bg-gradient-to-br from-sky-500 via-sky-600 to-indigo-700 py-0 text-white shadow-lg">
+    <Card className="mb-4 overflow-hidden border-0 bg-linear-to-br from-sky-500 via-sky-600 to-indigo-700 py-0 text-white shadow-lg">
       <CardHeader className="pt-6">
         <div className="flex items-start justify-between">
           <div>

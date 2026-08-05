@@ -13,6 +13,7 @@ import { Item, ItemActions, ItemContent, ItemMedia, ItemTitle } from "./ui/item"
 import { ChevronRightIcon } from "lucide-react"
 import { useAppData, useAppDispatch } from "@/app/context/AppContext"
 import { Button } from "./ui/button"
+import InboxPreview from "./Mail"
 
 export function TabsLine() {
   const { favirotes, sheetState } = useAppData()
@@ -83,8 +84,7 @@ export function TabsLine() {
           <CardHeader>
             <CardTitle>Analytics</CardTitle>
             <CardDescription>
-              View your analytics and performance metrics across all your active
-              projects.
+              <InboxPreview />
             </CardDescription>
           </CardHeader>
           <CardContent className="text-sm text-muted-foreground">

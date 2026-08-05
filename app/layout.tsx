@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils"
 import { AppProvider } from "./context/AppContext"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import { SessionProvider } from "next-auth/react"
 
 const queryClient = new QueryClient()
 
@@ -33,11 +34,13 @@ export default function RootLayout({
       )}
     >
       <body>
-        <QueryClientProvider client={queryClient}>
-          <AppProvider>
-            <ThemeProvider>{children}</ThemeProvider>
-          </AppProvider>
-        </QueryClientProvider>
+        <SessionProvider>
+          <QueryClientProvider client={queryClient}>
+            <AppProvider>
+              <ThemeProvider>{children}</ThemeProvider>
+            </AppProvider>
+          </QueryClientProvider>
+        </SessionProvider>
       </body>
     </html>
   )

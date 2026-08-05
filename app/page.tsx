@@ -3,6 +3,7 @@
 import { SheetDemo } from "@/components/AppSheet"
 import { CustomCalendar } from "@/components/Calendar"
 import { Search } from "@/components/Search"
+import { Settings } from "@/components/Settings"
 import { TabsLine } from "@/components/Tab"
 
 import {
@@ -26,6 +27,7 @@ export default function Page() {
             <CustomCalendar />
           </CardContent>
         </Card>
+        <Separator orientation="horizontal" className="mt-4 mb-4 h-full" />
         <Card>
           <CardHeader>
             <CardTitle>Notes pad?</CardTitle>
@@ -65,7 +67,10 @@ export default function Page() {
         <SheetDemo />
       </div>
       <div className="col-span-1 gap-4 rounded-lg p-4">
+        <Settings />
+        <Separator orientation="horizontal" className="mt-4 mb-4 h-full" />
         <Weather />
+        <Separator orientation="horizontal" className="mt-4 mb-4 h-full" />
         <Card>
           <CardHeader>
             <CardTitle>Github info?</CardTitle>
