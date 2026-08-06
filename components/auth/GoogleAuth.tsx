@@ -2,6 +2,7 @@
 "use client"
 
 import { useSession, signIn, signOut } from "next-auth/react"
+import { Button } from "../ui/button"
 
 function GoogleIcon() {
   return (
@@ -64,12 +65,19 @@ export default function SignInButton() {
   }
 
   return (
-    <button
+    <Button variant={"outline"} onClick={() => signIn("google")}>
+      <GoogleIcon />
+      Sign in with Google
+    </Button>
+  )
+}
+
+{
+  /* <button
       onClick={() => signIn("google")}
       className="flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm transition-all hover:bg-gray-50 hover:shadow"
     >
       <GoogleIcon />
       Sign in with Google
-    </button>
-  )
+    </button> */
 }
