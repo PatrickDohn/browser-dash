@@ -8,6 +8,7 @@ import { Avatar, AvatarFallback } from "./ui/avatar"
 import { Separator } from "./ui/separator"
 import { Button } from "./ui/button"
 import { Skeleton } from "./ui/skeleton"
+import Link from "next/link"
 
 function getHeader(message: any, name: string): string {
   return message.payload.headers.find((h: any) => h.name === name)?.value ?? ""
@@ -31,7 +32,7 @@ function getRecieved(message: string): string[] {
 
 export default function InboxPreview() {
   const { data: messages, isPending, error } = useGmailMessages()
-
+  console.log(messages)
   if (isPending)
     return (
       <div className="flex items-center gap-2">
@@ -87,7 +88,9 @@ export default function InboxPreview() {
             <ItemActions className="flex flex-col">
               <p className="text-xs">{formatTime[1]}</p>
               <Button variant="outline" size="icon-sm">
-                <CornerDownRight />
+                <Link href={`https://mail.google.com/mail/u/0/#all/${msg.id}`}>
+                  <CornerDownRight />
+                </Link>
               </Button>
             </ItemActions>
           </Item>
