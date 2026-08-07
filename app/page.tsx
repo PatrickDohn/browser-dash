@@ -23,7 +23,7 @@ export default function Page() {
     <div className="grid h-screen grid-cols-4 gap-4 p-6 sm:grid-cols-1 md:grid-cols-4">
       <div className="col-span-1 rounded-lg p-4">
         <Card className="mb-4 p-0">
-          <CardContent className="p-0 pl-6">
+          <CardContent className="p-0">
             <CustomCalendar />
           </CardContent>
         </Card>

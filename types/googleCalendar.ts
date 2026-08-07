@@ -70,3 +70,16 @@ export interface GCalendar {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   items: any[]
 }
+
+export interface CalEventType {
+  calendar: string
+  attendees: {
+    email: string
+    responseStatus: string
+  }[]
+  description: string
+  start: { dateTime?: string; date?: string; timeZone?: string }
+  end: { dateTime?: string; date?: string; timeZone?: string }
+  status: string
+  summary: string
+}
