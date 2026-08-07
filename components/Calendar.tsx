@@ -18,10 +18,39 @@ import { CalEventType } from "@/types/googleCalendar"
 import { Balloon, CalendarDays } from "lucide-react"
 import { Button } from "./ui/button"
 import { cn } from "@/lib/utils"
+import { useSession } from "next-auth/react"
 
 export function CustomCalendar() {
   const [date, setDate] = React.useState<Date | undefined>(new Date())
   const { data: events, isPending, error } = useGoogleCalendar()
+  const { data: session } = useSession()
+
+  if (session === null) {
+    return (
+      <Calendar
+        mode="single"
+        selected={date}
+        onSelect={setDate}
+        className="[--cell-size:--spacing(12)] md:[--cell-size:--spacing(10)]"
+        captionLayout="dropdown"
+        components={{
+          DayButton: ({ children, modifiers, day, ...props }) => {
+            return (
+              <CalendarDayButton
+                day={day}
+                modifiers={modifiers}
+                events={[]}
+
+                {...props}
+              >
+                {children}
+              </CalendarDayButton>
+            )
+          },
+        }}
+      />
+    )
+  }
 
   if (error) return <p>Failed to load calendar</p>
   if (isPending) return <p>LOAIDNG....</p>
