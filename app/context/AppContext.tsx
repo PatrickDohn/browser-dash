@@ -1,8 +1,9 @@
 "use client"
 
+import { CalEventType } from "@/types/googleCalendar"
 import { createContext, ReactNode, useContext, useReducer } from "react"
 
-type SheetContext = "favorites" | "analytics" | "settings" | null
+type SheetContext = "favorites" | "analytics" | "settings" | "calendar" | null
 
 interface AppProviderProps {
   children: ReactNode
@@ -20,6 +21,7 @@ interface AppProps {
   sheetState: {
     isOpen: boolean
     context: SheetContext
+    eventData?: CalEventType[]
   }
 }
 
@@ -34,6 +36,7 @@ export type AppActions =
       payload: {
         isOpen: boolean
         context: SheetContext
+        eventData?: CalEventType[]
       }
     }
 

@@ -7,6 +7,10 @@ import {
   type Locale,
 } from "react-day-picker"
 
+import { cva, type VariantProps } from "class-variance-authority"
+
+import { useAppData, useAppDispatch } from "@/app/context/AppContext"
+
 import { Calendar } from "@/components/ui/calendar"
 import { useGoogleCalendar } from "@/hooks/useGmailCalendar"
 import { filterCalEvents } from "@/utils/filterCalEvents"
@@ -47,7 +51,7 @@ export function CustomCalendar() {
       mode="single"
       selected={date}
       onSelect={setDate}
-      className="[--cell-size:--spacing(10)] md:[--cell-size:--spacing(10)]"
+      className="[--cell-size:--spacing(12)] md:[--cell-size:--spacing(10)]"
       captionLayout="dropdown"
       components={{
         DayButton: ({ children, modifiers, day, ...props }) => {
@@ -58,6 +62,7 @@ export function CustomCalendar() {
               events={
                 eventsByDay.get(day.date.toISOString().slice(0, 10)) ?? []
               }
+
               {...props}
             >
               {children}
@@ -68,10 +73,6 @@ export function CustomCalendar() {
     />
   )
 }
-
-import { cva, type VariantProps } from "class-variance-authority"
-
-// --- Events badge, structured like BubbleReactions ---
 
 const calendarDayEventsVariants = cva(
   "absolute z-10 flex items-center justify-center gap-0.5",
@@ -114,11 +115,14 @@ function CalendarDayEvents({
       {...props}
     >
       {events.map((event, i) => (
-        <div key={i} className="rounded-full bg-accent">
+        <div
+          key={i}
+          className="flex size-4 items-center justify-center rounded-full bg-accent ring-1"
+        >
           {event.calendar.includes("Holiday") ? (
-            <Balloon size={10} />
+            <Balloon className="size-2" />
           ) : (
-            <CalendarDays size={10} />
+            <CalendarDays className="size-2" />
           )}
         </div>
       ))}
@@ -139,7 +143,8 @@ function CalendarDayButton({
   events?: CalEventType[]
 }) {
   const defaultClassNames = getDefaultClassNames()
-
+  const dispatch = useAppDispatch()
+  const { sheetState } = useAppData()
   const ref = React.useRef<HTMLButtonElement>(null)
   React.useEffect(() => {
     if (modifiers.focused) ref.current?.focus()
@@ -166,6 +171,18 @@ function CalendarDayButton({
         className
       )}
       {...props}
+      onClick={() =>
+        events.length !== 0
+          ? dispatch?.({
+              type: "SET_SHEET_STATE",
+              payload: {
+                isOpen: !sheetState.isOpen,
+                context: "calendar",
+                eventData: events,
+              },
+            })
+          : null
+      }
     >
       {children}
       <CalendarDayEvents events={events} />
