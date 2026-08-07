@@ -1,11 +1,17 @@
 "use client"
 
-import { Paperclip, PictureInPictureIcon, PlusCircle } from "lucide-react"
+import {
+  MoreHorizontal,
+  Paperclip,
+  PictureInPictureIcon,
+  PlusCircle,
+} from "lucide-react"
 
 import { Field, FieldDescription, FieldLabel } from "@/components/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
+  InputGroupButton,
   InputGroupInput,
 } from "@/components/ui/input-group"
 import React from "react"
@@ -18,6 +24,13 @@ import {
   PopoverTitle,
   PopoverTrigger,
 } from "./ui/popover"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu"
 
 export function Search() {
   const [value, setValue] = React.useState<string>("")
@@ -43,30 +56,54 @@ export function Search() {
           placeholder="Search..."
         />
         <InputGroupAddon align="inline-start">
-          <Popover>
-            <PopoverTrigger className="h-7 gap-1 rounded-none px-2.5">
-              <PlusCircle />
-            </PopoverTrigger>
-            <PopoverContent className={"w-fit rounded-2xl"} align="start">
-              <PopoverHeader>
-                <PopoverTitle></PopoverTitle>
-                <PopoverDescription>
-                  <>
-                    <Button className="rounded-3xl" variant={"ghost"}>
-                      <PictureInPictureIcon />
-                      Upload Image
-                    </Button>
-                  </>
-                  <>
-                    <Button className="rounded-3xl" variant={"ghost"}>
-                      <Paperclip />
-                      Upload File
-                    </Button>
-                  </>
-                </PopoverDescription>
-              </PopoverHeader>
-            </PopoverContent>
-          </Popover>
+          <DropdownMenu>
+            <DropdownMenuTrigger
+              render={
+                <InputGroupButton
+                  variant="ghost"
+                  aria-label="More"
+                  size="icon-xs"
+                >
+                  <PlusCircle />
+                </InputGroupButton>
+              }
+            />
+            <DropdownMenuContent align="start" sideOffset={8} alignOffset={-4}>
+              <DropdownMenuGroup>
+                <DropdownMenuItem className="text-xs">
+                  <PictureInPictureIcon />
+                  Upload Image
+                </DropdownMenuItem>
+                <DropdownMenuItem className="text-xs">
+                  <Paperclip />
+                  Upload File
+                </DropdownMenuItem>
+                <DropdownMenuItem>Open location</DropdownMenuItem>
+              </DropdownMenuGroup>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </InputGroupAddon>
+        <InputGroupAddon align={"inline-end"}>
+          <DropdownMenu>
+            <DropdownMenuTrigger
+              render={
+                <InputGroupButton
+                  variant="ghost"
+                  aria-label="More"
+                  size="icon-xs"
+                >
+                  <MoreHorizontal />
+                </InputGroupButton>
+              }
+            />
+            <DropdownMenuContent align="end" sideOffset={8} alignOffset={-4}>
+              <DropdownMenuGroup>
+                <DropdownMenuItem>Settings</DropdownMenuItem>
+                <DropdownMenuItem>Copy path</DropdownMenuItem>
+                <DropdownMenuItem>Open location</DropdownMenuItem>
+              </DropdownMenuGroup>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </InputGroupAddon>
       </InputGroup>
       <FieldDescription></FieldDescription>
