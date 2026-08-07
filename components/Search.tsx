@@ -16,15 +16,6 @@ import {
   InputGroupInput,
 } from "@/components/ui/input-group"
 import React from "react"
-import { Button } from "./ui/button"
-import {
-  Popover,
-  PopoverContent,
-  PopoverDescription,
-  PopoverHeader,
-  PopoverTitle,
-  PopoverTrigger,
-} from "./ui/popover"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -72,7 +63,6 @@ export function Search() {
   }
 
   const goSearch = () => {
-    console.log(engine.query)
     window.open(buildquery(engine), "_blank", "noopener,noreferrer")
   }
 
